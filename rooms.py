@@ -1,9 +1,13 @@
 import items
+import characters
 
 #Room parent class
 class Room:
     def __init__(self):
         self.name = "Template"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = None
         self.south_room = None
         self.east_room = None
@@ -15,6 +19,9 @@ class Room:
 class Gate(Room):
     def __init__(self):
         self.name = "Castle Gates"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = "Lawn" #replace
         self.south_room = None
         self.east_room = None
@@ -25,6 +32,9 @@ class Gate(Room):
 class Lawn(Room):
     def __init__(self):
         self.name = "Castle Grass Lawn"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = "Castle"
         self.south_room = "Gate"
         self.east_room = "Lakeside"
@@ -35,6 +45,9 @@ class Lawn(Room):
 class Lakeside(Room):
     def __init__(self):
         self.name = "Lakeside"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = None
         self.south_room = None
         self.east_room = None
@@ -45,6 +58,9 @@ class Lakeside(Room):
 class Forest(Room):
     def __init__(self):
         self.name = "Forest"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = None
         self.south_room = None
         self.east_room = "Lawn"
@@ -55,6 +71,9 @@ class Forest(Room):
 class Shed(Room):
     def __init__(self):
         self.name = "Abandoned Shed"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = None
         self.south_room = None
         self.east_room = "Gate"
@@ -65,6 +84,9 @@ class Shed(Room):
 class Castle(Room):
     def __init__(self):
         self.name = "Template"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = None
         self.south_room = "Lawn"
         self.east_room = None
@@ -75,6 +97,9 @@ class Castle(Room):
 class Castle_Room(Room):
     def __init__(self):
         self.name = "Template"
+        self.longDesc = ""
+        self.shortDesc = ""
+        self.familiar = False
         self.north_room = None
         self.south_room = None
         self.east_room = "Castle"
