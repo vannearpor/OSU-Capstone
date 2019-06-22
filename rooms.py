@@ -12,24 +12,24 @@ class Room:
         self.characters = []
 
 #Actual Rooms
-class Gateway(Room):
+class Gate(Room):
     def __init__(self):
-        self.name = "Template"
-        self.north_room = None
+        self.name = "Castle Gates"
+        self.north_room = "Lawn" #replace
         self.south_room = None
         self.east_room = None
-        self.west_room = None
+        self.west_room = "Shed" #replace
         self.items = []
         self.characters = []
 
 class Lawn(Room):
     def __init__(self):
         self.name = "Castle Grass Lawn"
-        self.north_room = None
-        self.south_room = None
-        self.east_room = None
-        self.west_room = None
-        self.items = []
+        self.north_room = "Castle"
+        self.south_room = "Gate"
+        self.east_room = "Lakeside"
+        self.west_room = "Forest"
+        self.items = ["statue"]
         self.characters = []
 
 class Lakeside(Room):
@@ -38,8 +38,8 @@ class Lakeside(Room):
         self.north_room = None
         self.south_room = None
         self.east_room = None
-        self.west_room = None
-        self.items = []
+        self.west_room = "Lawn"
+        self.items = ["key"]
         self.characters = []
 
 class Forest(Room):
@@ -47,9 +47,9 @@ class Forest(Room):
         self.name = "Forest"
         self.north_room = None
         self.south_room = None
-        self.east_room = None
+        self.east_room = "Lawn"
         self.west_room = None
-        self.items = []
+        self.items = ["sword"]
         self.characters = []
 
 class Shed(Room):
@@ -57,27 +57,27 @@ class Shed(Room):
         self.name = "Abandoned Shed"
         self.north_room = None
         self.south_room = None
-        self.east_room = None
+        self.east_room = "Gate"
         self.west_room = None
-        self.items = []
+        self.items = ["boat"]
         self.characters = []
 
 class Castle(Room):
     def __init__(self):
         self.name = "Template"
         self.north_room = None
-        self.south_room = None
+        self.south_room = "Lawn"
         self.east_room = None
-        self.west_room = None
+        self.west_room = "Castle_Room"
         self.items = []
-        self.characters = []
+        self.characters = ["behemoth"]
 
 class Castle_Room(Room):
     def __init__(self):
         self.name = "Template"
         self.north_room = None
         self.south_room = None
-        self.east_room = None
+        self.east_room = "Castle"
         self.west_room = None
         self.items = []
-        self.characters = []
+        self.characters = ["Lyn"]
