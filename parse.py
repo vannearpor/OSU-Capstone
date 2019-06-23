@@ -1,96 +1,68 @@
-import data
-import items
-import rooms
-
 #Receives input from engine and understands what the user is trying to accomplish
 
-#pulls arrays from data.py file into here
-actionList = data.actions
-roomList = data.rooms
-itemList = data.items
-npcList = data.npcs
+#List of possible actions, directions, items, and characters that the user can choose from
 
 class Parser:
-    def __init__(self):
-        self.action = None
-        self.object = None
-        self.preposition = None
     
-    def get_action(self, userInput):
-        input = userInput.lower()
-        input_words = input.split()
-        
-        #First word should be command word
-        if input_words:
-            command = input_words[0]
-        else:
-            command = None
+    ACTIONLIST = ["look", "look at", "take", "drop", "view", "go", "fight", "interact"]
+    DIRECTIONLIST = ["north", "south", "east", "west"]
+    ITEMLIST = ["sword", "boat", "key", "statue", "tree", "cage", "bones", "dung", "gate", "sign", "tools", "furnace"]
+    CHARLIST = ["behemoth", "lyn", "fisherman", "elder"]
+    
+    def parse_command(userInput):
+        command = userInput.lower()
+        command_words = userInput.split()
 
-        if command is None:
-            print("Please enter a command.")
-            return 0
-
-        else:
-            if command in actionList:
-                self.action = command
-                #word is then compared to list of action words to see if it's a valid action command
-                #parser then sends action to engine to carryout user action
-        
-                #searches through the rest of the words to find matches to see what object the
-                #commands are intended for. Whether it's a room, item, or character.
-                
-                #checks to see there is also a preposition for the engine to add onto the string that's displayed to the player
-                for word in input_words:
-                    if word in prepositionList:
-                        self.preposition = word
-                
+        #First word should be the action word
+        if command_words:
+            temp_action = command_words[0]
+            if temp_action in Parser.ACTIONLIST:
+                action = Parser.ACTIONLIST[temp_action]
+                del command_words[0]
             else:
-                print("Action Invalid.")
-                return 0
-            
-        return self.action
-
-    def get_target(self, userInput):
-        input = userInput.lower()
-        input_words = input.split()
-        
-        room = None
-        item = None
-        npc = None
-        
-        for word in input_words:
-            if word in roomList:
-                room = word
-
-            if word in itemList:
-                item = word
-
-            if word in npcList:
-                npc = word
-            
-        #after identifying the object, parser will let the engine know what actions & objects were
-        #engine will then need to determine if the action on the object is valid & doable.
-
-        if room is not None:
-            self.object = room
-            
-        if item is not None:
-            self.object = item
-        
-        if npc is not None:
-            self.object = npc
-
-        if self.object is None:
-            print("Target object doesn't exist, please try command again on a valid object. It may be a room, item, or NPC.")
-            return 0
-            
+                action = None
         else:
-            return self.object
+            action = None
 
-    def print_command(self):
-        if self.action is not None and self.object is not None:
-                if self.preposition is not None:
-                    string_display = "Doge %s %s %s." % (self.action, self.preposition, self.object)
+        #If action word is invalid, nothing can happen return None for all
+        if action is None:
+            print("Please enter a valid command.")
+            return (None, None, None, None)
 
-                else:
-                    string_display = "Doge %s %s." % (self.action, self.object)
+        if action == "go":
+
+            #have user find which way to go, north south east or west
+            direction = None
+            if command_words:
+                for word in command_words:
+                    if word in Parser.DIRECTIONLIST:
+                        direction = Parser.DIRECTIONLIST[word]
+                        break
+
+            #user provides go with no more words in the command word list
+            if direction is None:
+                print("You provided a \"go\" command with no direction. Please enter a valid command.")
+                return (None, None, None, None)
+
+            return (action, direction, None, None)
+
+        else:
+            item = None
+            character = None
+
+            if command_words:
+                for word in command_words:
+                    if word in Parser.ITEMLIST:
+                    item = Parser.ITEMLIST[word]
+
+                    if word in Parser.CHARLIST:
+                    character = Parser.CHARLIST[word]
+
+            return (action, None, item, character)
+
+
+
+
+
+
+
