@@ -60,9 +60,39 @@ class Parser:
 
             return (action, None, item, character)
 
+def main():
+    #parser will keep running until a valid command is given
+    while True:
+        print('\n')
+        print('\n')
 
+        cmd_line_input = input("What would you like to do next?\n")
 
+        print('\n')
 
+        if cmd_line_input == "quit":
+            print("Shutting down...")
+            break
 
+        action, direction, item, character = Parser.parse_command(cmd_line_input)
 
+        print("Command:\n")
 
+        if action:
+            print("Action: {0}".format(action))
+
+            if direction:
+                print("Direction: {0}".format(direction))
+
+            if item:
+                print("Direction: {0}".format(item))
+
+            if character:
+                print("Character: {0}".format(character))
+
+        else:
+            print("Please enter a valid command\n")
+            print("Enter HELP if you would like a list of valid commands\n")
+
+if __name__ == "__main__":
+    main()
