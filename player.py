@@ -10,30 +10,59 @@ class Player:
         self.location = None
         
     def look(self):
-        #grabs location room description
+        print("You are at the {0}, you scan you environment and look around.".format(self.location.name))
+        
+        if self.location,familiar == True:
+            print("{0}".format(self.location.shortDesc))
+        
+        if self.location.familiar == False:
+            print("{0}".format(self.location.longDesc))
+            self.location.familiar = True
 
-    def look_at(self, item):
-        #if player location is in room1:
-            #if item is in room1 item list:
-                #then bring up item description
+    def look_at(self, cmd_item):
+        item = None
+        if cmd_item:
+            for room_item in self.location.items:
+                if room_item == cmd_item:
+                    item = self.location.items[room_item]
+                    break
+                    
+        else:
+            print("That item doesn't exist in this room")
 
-        #else if player location is in room2:
-            #etc.
+    def take(self, cmd_item):
+        item = None
+        if cmd_item:
+            for room_item in self.location.items:
+                if room_item == cmd_item:
+                    item = self.location.items[room_item]
 
-    def take(self, item):
-        #if player location is in room1:
-            #if item is in room1 item list:
-                #check if item_taken is false:
-                    #if is, take item
-                #else
-                    #you already have item
+        if item is not None:
+            if item.can_be_held == True:
+                if item.held == False:
+                    self.inventory.append(item)
+                    item.held = True
+                else:
+                    print("You are already holding this item")
+            else:
+                print("This item cannot be held")
+        else:
+            print("This item does not exist in this room")
 
-        #else if player location is in room2:
-            #etc.
+    def drop(self, cmd_item):
+        item = None
+        if cmd_item:
+            for held_item in self.inventory:
+                if held_item == cmd_item:
+                    item = self.inventory[held_item]
 
-    def drop(self, item):
-        #if player has item:
-            #remove from inventory, item is taken is false, enter item in current room inventory
+        if item is not None:
+            self.location.items.append(item)
+            self.inventory.remove(item)
+            item.held = False
+
+        else:
+            print("You cannot drop an item that you do not have in your inventory")
 
     def view_inventory(self):
         #prints item in the inventory list
