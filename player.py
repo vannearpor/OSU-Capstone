@@ -80,7 +80,7 @@ class Player:
             print("NONE. You currently have no items in your inventory.")
             print()
 
-    def fight(self, item, character):
+    ##def fight(self, item, character):
         #check if in right room
             #check if character is Behemoth
                 #check if you have a sword in inventory

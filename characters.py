@@ -16,7 +16,7 @@ class behemoth (Character):
         self.alive = True
 
     def interact(self):
-        print self.dialogue
+        print(self.dialogue)
 
 class lyn (Character):
     def __init_(self):
@@ -25,7 +25,7 @@ class lyn (Character):
         self.alive = True
 
     def interact(self):
-        print self.dialogue
+        print(self.dialogue)
 
 class fisherman (Character):
     def __init__(self):
@@ -34,7 +34,7 @@ class fisherman (Character):
         self.alive = True
 
     def interact(self):
-        print self.dialogue
+        print(self.dialogue)
 
 class elder (Character):
     def __init__(self):
@@ -43,5 +43,5 @@ class elder (Character):
         self.alive = True
     
     def interact(self):
-        print self.dialogue
+        print(self.dialogue)
 
