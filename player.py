@@ -13,7 +13,7 @@ class Player:
     def look(self):
         print("You are at the {0}, you scan you environment and look around.".format(self.location.name))
         
-        if self.location,familiar == True:
+        if self.location.familiar == True:
             print("{0}".format(self.location.shortDesc))
         
         if self.location.familiar == False:
