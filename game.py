@@ -6,7 +6,7 @@ import datetime
 import subprocess
 import time
 
-import termios import tcflush, TCIFLUSH
+from termios import tcflush, TCIFLUSH
 
 import parse
 import player
