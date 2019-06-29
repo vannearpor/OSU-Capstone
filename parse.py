@@ -53,10 +53,10 @@ class Parser:
             if command_words:
                 for word in command_words:
                     if word in Parser.ITEMLIST:
-                    item = Parser.ITEMLIST[word]
+                        item = Parser.ITEMLIST[word]
 
                     if word in Parser.CHARLIST:
-                    character = Parser.CHARLIST[word]
+                        character = Parser.CHARLIST[word]
 
             return (action, None, item, character)
 
