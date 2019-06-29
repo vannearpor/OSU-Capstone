@@ -7,7 +7,7 @@ class Player:
     def __init__(self):
         self.name = "Ellis"
         self.inventory = []
-        self.location = None
+        self.location = rooms.Gate 
         
     def look(self):
         print("You are at the {0}, you scan you environment and look around.".format(self.location.name))

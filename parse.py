@@ -4,7 +4,7 @@
 
 class Parser:
     
-    ACTIONLIST = ["look", "look at", "take", "drop", "view", "go", "fight", "interact"]
+    ACTIONLIST = ["look", "look at", "take", "drop", "view", "go", "fight", "interact", "quit", "help"]
     DIRECTIONLIST = ["north", "south", "east", "west"]
     ITEMLIST = ["sword", "boat", "key", "statue", "tree", "cage", "bones", "dung", "gate", "sign", "tools", "furnace"]
     CHARLIST = ["behemoth", "lyn", "fisherman", "elder"]
