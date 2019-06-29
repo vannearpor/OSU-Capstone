@@ -2,6 +2,7 @@ import os
 import sys
 import time
 
+import game
 import parse
 import player
 import rooms
