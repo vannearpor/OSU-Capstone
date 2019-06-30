@@ -9,7 +9,7 @@ class Parser:
     ITEMLIST = ["sword", "boat", "key", "statue", "tree", "cage", "bones", "dung", "gate", "sign", "tools", "furnace"]
     CHARLIST = ["behemoth", "lyn", "fisherman", "elder"]
     
-    def parse_command(userInput):
+    def parse_command(self, userInput):
         command = userInput.lower()
         command_words = userInput.split()
 
@@ -19,12 +19,16 @@ class Parser:
             action_list_length = len(Parser.ACTIONLIST)
             
             for i in range(action_list_length):
+                print("Scanning through action list finding {0}".format(temp_action))
+                print("Matching with {0}".format(Parser.ACTIONLIST[i]))
                 if temp_action == Parser.ACTIONLIST[i]:
                     action = Parser.ACTIONLIST[i]
                     del command_words[0]
+                    break
                 else:
                     action = None
         else:
+            print("No Command Words")
             action = None
 
         #If action word is invalid, nothing can happen return None for all
@@ -33,14 +37,17 @@ class Parser:
             return (None, None, None, None)
 
         if action == "go":
-
+            print("Action is GO")
             #have user find which way to go, north south east or west
             direction = None
             if command_words:
+                direction_list_length = len(Parser.DIRECTIONLIST)
+                
                 for word in command_words:
-                    if word in Parser.DIRECTIONLIST:
-                        direction = Parser.DIRECTIONLIST[word]
-                        break
+                    for i in range(direction_list_length):
+                        if word == Parser.DIRECTIONLIST[i]:
+                            direction = Parser.DIRECTIONLIST[i]
+                            break
 
             #user provides go with no more words in the command word list
             if direction is None:
@@ -50,16 +57,21 @@ class Parser:
             return (action, direction, None, None)
 
         else:
+            item_list_length = len(Parser.ITEMLIST)
+            char_list_length = len(Parser.CHARLIST)
             item = None
             character = None
 
             if command_words:
                 for word in command_words:
-                    if word in Parser.ITEMLIST:
-                        item = Parser.ITEMLIST[word]
+                    for i in range(item_list_length):
+                        if word == Parser.ITEMLIST[i]:
+                            item = Parser.ITEMLIST[i]
+                            break
 
-                    if word in Parser.CHARLIST:
-                        character = Parser.CHARLIST[word]
+                        if word == Parser.CHARLIST[i]:
+                            character = Parser.CHARLIST[i]
+                            break
 
             return (action, None, item, character)
 

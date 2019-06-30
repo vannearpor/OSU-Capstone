@@ -77,7 +77,7 @@ class Game(object):
 
             user_cmd = user_input()
 
-            user_action, user_direction, user_item, user_char = Parser.parse_command(user_cmd)
+            user_action, user_direction, user_item, user_char = game_parser.parse_command(user_cmd)
 
             if user_action == "go":
                 if user_direction:
