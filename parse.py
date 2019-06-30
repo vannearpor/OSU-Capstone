@@ -16,11 +16,14 @@ class Parser:
         #First word should be the action word
         if command_words:
             temp_action = command_words[0]
-            if temp_action in Parser.ACTIONLIST:
-                action = Parser.ACTIONLIST[temp_action]
-                del command_words[0]
-            else:
-                action = None
+            action_list_length = len(Parser.ACTIONLIST)
+            
+            for i in range(action_list_length):
+                if temp_action == Parser.ACTIONLIST[i]:
+                    action = Parser.ACTIONLIST[i]
+                    del command_words[0]
+                else:
+                    action = None
         else:
             action = None
 

@@ -2,16 +2,16 @@ import os
 import sys
 import time
 
-import game
-import parse
-import player
+from game import Game
+from parse import Parser
+from player import Player
 import rooms
 import items
 import characters
 
 class Eden(Game):
-    def __init__(self, player):
-        Game.__init__(self, player)
+    def __init__(self):
+        Game.__init__(self)
 
     #def introduction(self):
     #write and print game intro here
@@ -39,6 +39,7 @@ def main():
         if user_input in ["1", "2", "3"]:
             if user_input == "1":
                 print("--- Starting Eden - The Adventure Game ---")
+                eden_instance.initialize()
                 break
 
             elif user_input == "2":
@@ -52,7 +53,7 @@ def main():
             print()
             is_valid = False
 
-    eden_instance.start()
+    eden_instance.play()
 
 if __name__ == "__main__":
     main()

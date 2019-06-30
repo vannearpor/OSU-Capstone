@@ -1,8 +1,8 @@
 #Item parent class
 class Item:
-    def __init__(self, name, description, can_be_held, held):
-        self.name = name
-        self.description = description
+    def __init__(self):
+        self.name = None
+        self.description = None
         self.can_be_held = None
         self.held = False
 

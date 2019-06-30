@@ -18,9 +18,9 @@ furnace = items.furnace()
 #Room parent class
 class Room:
     def __init__(self):
-        self.name = "Template"
-        self.longDesc = ""
-        self.shortDesc = ""
+        self.name = None
+        self.longDesc = None
+        self.shortDesc = None
         self.familiar = False
         self.north_room = None
         self.south_room = None

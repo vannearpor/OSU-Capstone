@@ -8,14 +8,14 @@ import time
 
 from termios import tcflush, TCIFLUSH
 
-import parse
-import player
 import rooms
 import items
 import characters
+from parse import Parser
+from player import Player
 
-action_cmd = parse.Parser.ACTIONLIST
-direction_cmd = parse.Parser.DIRECTIONLIST
+action_cmd = Parser.ACTIONLIST
+direction_cmd = Parser.DIRECTIONLIST
 
 def user_input():
     tcflush(sys.stdin, TCIFLUSH)
@@ -23,12 +23,24 @@ def user_input():
     return cmd
 
 class Game(object):
-    def __init__(self, player = None):
-        if player:
-            self.player = player
+    def __init__(self):
+        self.player = Player()
         self.rooms = []
         self.items = []
         self.characters = []
+    
+    def initialize(self):
+        #Create rooms
+        gate_rm = rooms.Gate()
+        lawn_rm = rooms.Lawn()
+        lakeside_rm = rooms.Lakeside()
+        forest_rm = rooms.Forest()
+        shed_rm = rooms.Shed()
+        castle_rm = rooms.Castle()
+        castle_room_rm = rooms.Castle_Room()
+    
+        #Set player location
+        self.player.location = gate_rm
 
     def play(self):
         game_parser = Parser()
@@ -37,7 +49,7 @@ class Game(object):
         run_game = True
         while run_game:
             current_location = self.player.location
-            print("You are currently in room {0}".format(current_room.name))
+            print("You are currently in room {0}".format(current_location.name))
             print()
             if current_location.familiar == False:
                 print("{0}".format(current_location.longDesc))
@@ -98,7 +110,7 @@ class Game(object):
             if user_action == "view":
                 self.player.view_inventory()
 
-            if user_action == "help":
+            ##if user_action == "help":
             #insert list of possible actions here
 
             if user_action == "quit":
