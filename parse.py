@@ -19,8 +19,8 @@ class Parser:
             action_list_length = len(Parser.ACTIONLIST)
             
             for i in range(action_list_length):
-                print("Scanning through action list finding {0}".format(temp_action))
-                print("Matching with {0}".format(Parser.ACTIONLIST[i]))
+                #print("Test - Scanning through action list finding {0}".format(temp_action))
+                #print("Test - Matching with {0}".format(Parser.ACTIONLIST[i]))
                 if temp_action == Parser.ACTIONLIST[i]:
                     action = Parser.ACTIONLIST[i]
                     del command_words[0]
@@ -37,7 +37,7 @@ class Parser:
             return (None, None, None, None)
 
         if action == "go":
-            print("Action is GO")
+            #print("Test - Action is GO")
             #have user find which way to go, north south east or west
             direction = None
             if command_words:

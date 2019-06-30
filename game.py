@@ -76,8 +76,8 @@ class Game(object):
         run_game = True
         while run_game:
             current_location = self.player.location
-            print("You are currently in room {0}".format(current_location.name))
-            print()
+            print("You are currently in room {0} -".format(current_location.name))
+
             if current_location.familiar == False:
                 print("{0}".format(current_location.longDesc))
                 print()

@@ -96,7 +96,7 @@ class Player:
         #if room available
 
         else:
-            print("There is nowhere to go north of {0}".format.self.location)
+            print("There is nowhere to go north of {0}".format(self.location.name))
             #print description of going into new room, set player's location to new room
             #initiate player look, print description
             #print items seen in the room
@@ -109,7 +109,7 @@ class Player:
         #if room available
         
         else:
-            print("There is nowhere to go south of {0}".format.self.location)
+            print("There is nowhere to go south of {0}".format(self.location.name))
 
     def go_west(self):
         #grab players current location
@@ -119,7 +119,7 @@ class Player:
         #if room available
         
         else:
-            print("There is nowhere to go west of {0}".format.self.location)
+            print("There is nowhere to go west of {0}".format(self.location.name))
 
     def go_east(self):
         #grab players current location
@@ -129,7 +129,7 @@ class Player:
         #if room available
         
         else:
-            print("There is nowhere to go east of {0}".format.self.location)
+            print("There is nowhere to go east of {0}".format(self.location.name))
 
     #place this function in game file - def help(self):
         #print out list of verbs that the user can use and some brief descriptions

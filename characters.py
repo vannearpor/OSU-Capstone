@@ -4,15 +4,15 @@
 """
 
 class Character:
-    def __init__(self, name, dialogue, alive):
-        self.name = name
-        self.dialogue = ""
+    def __init__(self):
+        self.name = None
+        self.dialogue = None
         self.alive = True
 
 class behemoth (Character):
     def __init__(self):
         self.name = "Behemoth"
-        self.dialogue = ""
+        self.dialogue = "\"You will never be able to save your partner Lyn.\""
         self.alive = True
 
     def interact(self):
@@ -21,7 +21,7 @@ class behemoth (Character):
 class lyn (Character):
     def __init_(self):
         self.name = "Lyn"
-        self.dialogue = ""
+        self.dialogue = "\"Ellis you did it! You saved me! Let's get back to town\""
         self.alive = True
 
     def interact(self):
