@@ -37,7 +37,34 @@ class Game(object):
         forest_rm = rooms.Forest()
         shed_rm = rooms.Shed()
         castle_rm = rooms.Castle()
-        castle_room_rm = rooms.Castle_Room()
+        dungeon_rm = rooms.Dungeon()
+        
+        #Connect Rooms
+        #Gate
+        gate_rm.north_room = lawn_rm
+        gate_rm.west_room = shed_rm
+        
+        #Lawn
+        lawn_rm.north_room = castle_rm
+        lawn_rm.south_room = gate_rm
+        lawn_rm.west_room = forest_rm
+        lawn_rm.east_room = lakeside_rm
+        
+        #Lakeside
+        lakeside_rm.west_room = lawn_rm
+        
+        #Forest
+        forest_rm.east_room = lawn_rm
+        
+        #Shed
+        shed_rm.east_room = gate_rm
+        
+        #Castle
+        castle_rm.south_room = lawn_rm
+        castle_rm.west_room = dungeon_rm
+        
+        #Castle Room
+        dungeon_rm.east_room = castle_rm
     
         #Set player location
         self.player.location = gate_rm

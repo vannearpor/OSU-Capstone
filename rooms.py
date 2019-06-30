@@ -36,10 +36,10 @@ class Gate(Room):
         self.longDesc = ""
         self.shortDesc = ""
         self.familiar = False
-        self.north_room = "Lawn" #replace
+        self.north_room = None
         self.south_room = None
         self.east_room = None
-        self.west_room = "Shed" #replace
+        self.west_room = None
         self.items = [gate, sign]
         self.characters = []
 
@@ -49,10 +49,10 @@ class Lawn(Room):
         self.longDesc = ""
         self.shortDesc = ""
         self.familiar = False
-        self.north_room = "Castle"
-        self.south_room = "Gate"
-        self.east_room = "Lakeside"
-        self.west_room = "Forest"
+        self.north_room = None
+        self.south_room = None
+        self.east_room = None
+        self.west_room = None
         self.items = [statue]
         self.characters = []
 
@@ -65,7 +65,7 @@ class Lakeside(Room):
         self.north_room = None
         self.south_room = None
         self.east_room = None
-        self.west_room = "Lawn"
+        self.west_room = None
         self.items = [bones, dung]
         self.characters = []
 
@@ -77,7 +77,7 @@ class Forest(Room):
         self.familiar = False
         self.north_room = None
         self.south_room = None
-        self.east_room = "Lawn"
+        self.east_room = None
         self.west_room = None
         self.items = [tree, cage, sword]
         self.characters = []
@@ -90,7 +90,7 @@ class Shed(Room):
         self.familiar = False
         self.north_room = None
         self.south_room = None
-        self.east_room = "Gate"
+        self.east_room = None
         self.west_room = None
         self.items = ["boat"]
         self.characters = [tools, furnace]
@@ -102,13 +102,13 @@ class Castle(Room):
         self.shortDesc = ""
         self.familiar = False
         self.north_room = None
-        self.south_room = "Lawn"
+        self.south_room = None
         self.east_room = None
-        self.west_room = "Castle_Room"
+        self.west_room = None
         self.items = []
         self.characters = ["behemoth"]
 
-class Castle_Room(Room):
+class Dungeon(Room):
     def __init__(self):
         self.name = "Template"
         self.longDesc = ""
@@ -116,7 +116,7 @@ class Castle_Room(Room):
         self.familiar = False
         self.north_room = None
         self.south_room = None
-        self.east_room = "Castle"
+        self.east_room = None
         self.west_room = None
         self.items = []
         self.characters = ["Lyn"]
