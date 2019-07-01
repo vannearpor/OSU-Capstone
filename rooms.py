@@ -59,7 +59,7 @@ class Lawn(Room):
         self.south_room = None
         self.east_room = None
         self.west_room = None
-        self.items = [statue, boat]
+        self.items = [statue]
         self.characters = []
 
 class Lakeside(Room):
@@ -72,7 +72,7 @@ class Lakeside(Room):
         self.south_room = None
         self.east_room = None
         self.west_room = None
-        self.items = [bones, dung]
+        self.items = [bones, dung, key]
         self.characters = []
 
 class Forest(Room):
@@ -98,7 +98,7 @@ class Shed(Room):
         self.south_room = None
         self.east_room = None
         self.west_room = None
-        self.items = [tools, furnace]
+        self.items = [tools, furnace, boat]
         self.characters = []
 
 class Castle(Room):

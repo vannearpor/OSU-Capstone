@@ -11,7 +11,7 @@ class Parser:
     
     def parse_command(self, userInput):
         command = userInput.lower()
-        command_words = userInput.split()
+        command_words = command.split()
 
         #First word should be the action word
         if command_words:
@@ -68,7 +68,7 @@ class Parser:
                         if word == Parser.ITEMLIST[i]:
                             item = Parser.ITEMLIST[i]
                             break
-
+                    for i in range(char_list_length):
                         if word == Parser.CHARLIST[i]:
                             character = Parser.CHARLIST[i]
                             break
