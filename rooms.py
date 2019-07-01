@@ -17,7 +17,7 @@ furnace = items.furnace()
 
 #Load characters into rooms
 behemoth = characters.behemoth()
-lyn = characters.lyn()
+partner = characters.partner()
 fisherman = characters.fisherman()
 elder = characters.elder()
 
@@ -73,7 +73,7 @@ class Lakeside(Room):
         self.east_room = None
         self.west_room = None
         self.items = [bones, dung, key]
-        self.characters = []
+        self.characters = [fisherman]
 
 class Forest(Room):
     def __init__(self):
@@ -86,7 +86,7 @@ class Forest(Room):
         self.east_room = None
         self.west_room = None
         self.items = [tree, cage, sword]
-        self.characters = []
+        self.characters = [elder]
 
 class Shed(Room):
     def __init__(self):
@@ -104,8 +104,8 @@ class Shed(Room):
 class Castle(Room):
     def __init__(self):
         self.name = "Behemoth's Castle"
-        self.longDesc = ""
-        self.shortDesc = ""
+        self.longDesc = "After walking through the Castle doors, you find yourself in a huge, cold stone room. The room is the biggest room you've ever seen in your life, but it's empty. As you look towards the West, you see a huge dragon named Behemoth guarding a Dungeon door. You suspect your partner Lyn is through those doors!"
+        self.shortDesc = "You are in the cold stone room of the Castle."
         self.familiar = False
         self.north_room = None
         self.south_room = None
@@ -117,12 +117,12 @@ class Castle(Room):
 class Dungeon(Room):
     def __init__(self):
         self.name = "Prisoner's Dungeon"
-        self.longDesc = ""
-        self.shortDesc = ""
+        self.longDesc = "You run through the Dungeon doors! You find your partner Lyn in the corner asleep!"
+        self.shortDesc = "You are in the Dungeon."
         self.familiar = False
         self.north_room = None
         self.south_room = None
         self.east_room = None
         self.west_room = None
         self.items = []
-        self.characters = [lyn]
+        self.characters = [partner]

@@ -116,6 +116,28 @@ class Player:
                     #behemoth removed from map
                     #allow user to enter princess room
 
+    def interact(self, character):
+        if self.location.name == "Prisoner's Dungeon":
+            if character == "lyn":
+                for i in self.location.characters:
+                    if character == i.name:
+                        print("{0}".format(i.dialogue))
+                        print("~~~CONGRATULATIONS!!! YOU FOUND YOUR PARTNER LYN AND WON EDEN - THE ADVENTURE GAME!~~~")
+                        return False
+            else:
+                print("That character does not exist in this room.")
+                return True
+
+        else:
+            for i in self.location.characters:
+                if character == i.name:
+                    print("{0}".format(i.dialogue))
+                    return True
+                else:
+                    print("That character does not exist in this room.")
+                    return True
+                            
+
     def go_north(self):
         #grab players current location
         #go into room object and see what the north room is

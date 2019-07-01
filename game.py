@@ -168,6 +168,11 @@ class Game(object):
                 if user_char:
                     self.player.fight(user_char)
             
+            if user_action == "interact":
+                if user_char:
+                    #game will end if sucessfully interact with Lyn.
+                    run_game = self.player.interact(user_char)
+            
             if user_action == "quit":
                 print("Shutting down...")
                 return
