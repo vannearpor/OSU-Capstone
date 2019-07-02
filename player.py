@@ -31,10 +31,13 @@ class Player:
         item = None
         if cmd_item:
             for room_item in self.location.items:
-                if room_item == cmd_item:
+                if cmd_item == room_item.name:
                     item = room_item
                     break
-                    
+    
+        if item:
+            print("{0}".format(item.description))
+        
         else:
             print("That item doesn't exist in this room")
 
@@ -42,7 +45,6 @@ class Player:
         item = None
         if cmd_item:
             for room_item in self.location.items:
-                print("{0}".format(room_item.name))
                 if cmd_item == room_item.name:
                     item = room_item
                     break
@@ -176,12 +178,23 @@ class Player:
     def go_west(self):
         #grab players current location
         #go into room object and see what the north room is
-        if self.location.west_room is not None:
-            self.location = self.location.west_room
-        #if room available
+        if self.location.name == "Behemoth's Castle":
+            room_unguarded = False
+            if self.location.characters:
+                print("The entrance to the Dungeon is blocked by the beast behemoth. You must defeat him to pass.")
+            
+            else:
+                room_unguarded = True
+
+            if room_unguarded == True:
+                self.location = self.location.west_room
         
         else:
-            print("There is nowhere to go west of {0}".format(self.location.name))
+            if self.location.west_room:
+                self.location = self.location.west_room
+
+            else:
+                print("There is nowhere to go west of {0}".format(self.location.name))
 
     def go_east(self):
         #grab players current location

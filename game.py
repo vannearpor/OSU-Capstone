@@ -126,6 +126,9 @@ class Game(object):
 
             if user_action == "look":
                 self.player.look()
+            
+            if user_action == "lookat":
+                self.player.look_at(user_item)
 
             if user_action == "take":
                 if user_item:

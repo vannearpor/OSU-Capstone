@@ -4,7 +4,7 @@
 
 class Parser:
     
-    ACTIONLIST = ["look", "look at", "take", "drop", "view", "go", "fight", "interact", "quit", "help"]
+    ACTIONLIST = ["look", "lookat", "take", "drop", "view", "go", "fight", "interact", "quit", "help"]
     DIRECTIONLIST = ["north", "south", "east", "west"]
     ITEMLIST = ["sword", "boat", "key", "statue", "tree", "cage", "bones", "dung", "gate", "sign", "tools", "furnace"]
     CHARLIST = ["behemoth", "lyn", "fisherman", "elder"]
@@ -16,6 +16,11 @@ class Parser:
         #First word should be the action word
         if command_words:
             temp_action = command_words[0]
+            
+            if len(command_words) > 1:
+                if command_words[0] == "look" and command_words[1] == "at":
+                    temp_action = "lookat"
+            
             action_list_length = len(Parser.ACTIONLIST)
             
             for i in range(action_list_length):
