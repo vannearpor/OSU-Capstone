@@ -1,6 +1,5 @@
 import os
 import sys
-import time
 
 from game import Game
 from parse import Parser
@@ -39,6 +38,15 @@ def main():
         if user_input in ["1", "2", "3"]:
             if user_input == "1":
                 print("--- Starting Eden - The Adventure Game ---")
+                print()
+                print("Hi Ellis...")
+                print("A week ago your village was attacked by a mighty beast named Behemoth. You and your partner Lyn were the top warriors protecting your village.")
+                print("Your partner Lyn went off to battle before you even knew the village was being attacked... she said she couldn't wait for you, she needed to save the village.")
+                print("The witnessing villagers say Lyn was close to defeating the Behemoth, but it was too strong.")
+                print("Upon defeating your partner Lyn, the Behemoth flew off... taking Lyn with it.")
+                print("The moment you found out you set on a journey to find Lyn... you stumble upon a large Castle... I think you've found the Behemoth and Lyn.")
+                print()
+                print("STARTING NOTE: TYPE IN \"help\" AND PRESS ENTER FOR A LIST OF COMMANDS")
                 eden_instance.initialize()
                 break
 

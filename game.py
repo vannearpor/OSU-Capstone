@@ -2,9 +2,6 @@
 
 import sys
 import os
-import datetime
-import subprocess
-import time
 
 from termios import tcflush, TCIFLUSH
 
@@ -14,12 +11,12 @@ import characters
 from parse import Parser
 from player import Player
 
-action_cmd = Parser.ACTIONLIST
-direction_cmd = Parser.DIRECTIONLIST
+action_cmd = Parser.action_list
+direction_cmd = Parser.direction_list
 
 def user_input():
     tcflush(sys.stdin, TCIFLUSH)
-    cmd = input("Please enter your next move:\n")
+    cmd = input("\nPlease enter your next move:\n>")
     return cmd
 
 class Game(object):
@@ -102,6 +99,9 @@ class Game(object):
             if current_location.characters:
                 for char in current_location.characters:
                     print("{0}".format(char.name))
+            
+            else:
+                print("There is no one else in this room.\n")
 
             user_cmd = user_input()
 
@@ -132,7 +132,7 @@ class Game(object):
 
             if user_action == "take":
                 if user_item:
-                    print("{0}".format(user_item))
+                    print("You placed {0} into your inventory.".format(user_item))
                     self.player.take(user_item)
             
                 else:

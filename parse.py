@@ -4,10 +4,10 @@
 
 class Parser:
     
-    ACTIONLIST = ["look", "lookat", "take", "drop", "view", "go", "fight", "interact", "quit", "help"]
-    DIRECTIONLIST = ["north", "south", "east", "west"]
-    ITEMLIST = ["sword", "boat", "key", "statue", "tree", "cage", "bones", "dung", "gate", "sign", "tools", "furnace"]
-    CHARLIST = ["behemoth", "lyn", "fisherman", "elder"]
+    action_list = ["look", "lookat", "take", "drop", "view", "go", "fight", "interact", "quit", "help"]
+    direction_list = ["north", "south", "east", "west"]
+    item_list = ["sword", "boat", "key", "statue", "tree", "cage", "bones", "dung", "gate", "sign", "tools", "furnace"]
+    character_list = ["behemoth", "lyn", "fisherman", "elder"]
     
     def parse_command(self, userInput):
         command = userInput.lower()
@@ -21,13 +21,13 @@ class Parser:
                 if command_words[0] == "look" and command_words[1] == "at":
                     temp_action = "lookat"
             
-            action_list_length = len(Parser.ACTIONLIST)
+            action_list_length = len(Parser.action_list)
             
             for i in range(action_list_length):
                 #print("Test - Scanning through action list finding {0}".format(temp_action))
-                #print("Test - Matching with {0}".format(Parser.ACTIONLIST[i]))
-                if temp_action == Parser.ACTIONLIST[i]:
-                    action = Parser.ACTIONLIST[i]
+                #print("Test - Matching with {0}".format(Parser.action_list[i]))
+                if temp_action == Parser.action_list[i]:
+                    action = Parser.action_list[i]
                     del command_words[0]
                     break
                 else:
@@ -46,12 +46,12 @@ class Parser:
             #have user find which way to go, north south east or west
             direction = None
             if command_words:
-                direction_list_length = len(Parser.DIRECTIONLIST)
+                direction_list_length = len(Parser.direction_list)
                 
                 for word in command_words:
                     for i in range(direction_list_length):
-                        if word == Parser.DIRECTIONLIST[i]:
-                            direction = Parser.DIRECTIONLIST[i]
+                        if word == Parser.direction_list[i]:
+                            direction = Parser.direction_list[i]
                             break
 
             #user provides go with no more words in the command word list
@@ -62,57 +62,20 @@ class Parser:
             return (action, direction, None, None)
 
         else:
-            item_list_length = len(Parser.ITEMLIST)
-            char_list_length = len(Parser.CHARLIST)
+            item_list_length = len(Parser.item_list)
+            char_list_length = len(Parser.character_list)
             item = None
             character = None
 
             if command_words:
                 for word in command_words:
                     for i in range(item_list_length):
-                        if word == Parser.ITEMLIST[i]:
-                            item = Parser.ITEMLIST[i]
+                        if word == Parser.item_list[i]:
+                            item = Parser.item_list[i]
                             break
                     for i in range(char_list_length):
-                        if word == Parser.CHARLIST[i]:
-                            character = Parser.CHARLIST[i]
+                        if word == Parser.character_list[i]:
+                            character = Parser.character_list[i]
                             break
 
             return (action, None, item, character)
-
-def main():
-    #parser will keep running until a valid command is given
-    while True:
-        print('\n')
-        print('\n')
-
-        cmd_line_input = input("What would you like to do next?\n")
-
-        print('\n')
-
-        if cmd_line_input == "quit":
-            print("Shutting down...")
-            break
-
-        action, direction, item, character = Parser.parse_command(cmd_line_input)
-
-        print("Command:\n")
-
-        if action:
-            print("Action: {0}".format(action))
-
-            if direction:
-                print("Direction: {0}".format(direction))
-
-            if item:
-                print("Direction: {0}".format(item))
-
-            if character:
-                print("Character: {0}".format(character))
-
-        else:
-            print("Please enter a valid command\n")
-            print("Enter HELP if you would like a list of valid commands\n")
-
-if __name__ == "__main__":
-    main()
